@@ -31,9 +31,9 @@ class SomeFramework {
     }
 
     // MARK: - Private function which should record analytics when printSun() is called. Also need to call original method
-    @objc private func logAnalytics() {
+    @objc private dynamic func logAnalytics() {
         print("Logging analytics.")
-        printSun()
+        logAnalytics()
     }
 
     private func swizzleFunctions() {
