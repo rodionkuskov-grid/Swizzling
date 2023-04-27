@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        SomeFramework().printSun()
+        /* SomeFramework().printSun() */
     }
 
     @objc dynamic func printSunModified() {
@@ -29,22 +29,23 @@ extension SomeFramework {
     }
 }
 
-// MARK: - Some framework
+// MARK: - Какой-нибудь фреймворк
 
 class SomeFramework {
-    private static var isSwizzlingCompleted: Bool = false
+    private static var isSwizzleCompleted: Bool = false
 
     init() {
-        guard !SomeFramework.isSwizzlingCompleted else { return }
+        guard !SomeFramework.isSwizzleCompleted else { return }
         swizzleFunctions()
     }
     
-    // MARK: - Public function which could be used outside the framework
+    // MARK: - Открытая функция, которую могут использовать вне фреймворка
     @objc public dynamic func printSun() {
         print("🌞")
     }
 
-    // MARK: - Private function which should record analytics when printSun() is called. Also need to call original method
+    // MARK: - Закрытая функция, которая собирает аналитку и вызывает открытую функцию printSun()
+    /// В случае, если нужно вызывать оригинальную функцию тоже, необходимо добавить dynamic keyword.
     @objc private dynamic func logAnalytics() {
         print("Logging analytics.")
         logAnalytics()
@@ -57,6 +58,6 @@ class SomeFramework {
         else { return }
 
         method_exchangeImplementations(originalMethod, customMethod)
-        SomeFramework.isSwizzlingCompleted = true
+        SomeFramework.isSwizzleCompleted = true
     }
 }

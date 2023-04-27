@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0AD5F5E29DB83A600C7A381 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AD5F5D29DB83A600C7A381 /* PushNotificationManager.swift */; };
 		F0C8E26329D8AFC200EB8CC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C8E26229D8AFC200EB8CC2 /* AppDelegate.swift */; };
 		F0C8E26729D8AFC200EB8CC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C8E26629D8AFC200EB8CC2 /* ViewController.swift */; };
 		F0C8E26A29D8AFC200EB8CC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C8E26829D8AFC200EB8CC2 /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0AD5F5C29DB801500C7A381 /* Swizzling.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Swizzling.entitlements; sourceTree = "<group>"; };
+		F0AD5F5D29DB83A600C7A381 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		F0C8E25F29D8AFC200EB8CC2 /* Swizzling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swizzling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C8E26229D8AFC200EB8CC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0C8E26629D8AFC200EB8CC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,8 +59,10 @@
 		F0C8E26129D8AFC200EB8CC2 /* Swizzling */ = {
 			isa = PBXGroup;
 			children = (
+				F0AD5F5C29DB801500C7A381 /* Swizzling.entitlements */,
 				F0C8E26229D8AFC200EB8CC2 /* AppDelegate.swift */,
 				F0C8E26629D8AFC200EB8CC2 /* ViewController.swift */,
+				F0AD5F5D29DB83A600C7A381 /* PushNotificationManager.swift */,
 				F0C8E27629D8B11500EB8CC2 /* SceneDelegate.swift */,
 				F0C8E26829D8AFC200EB8CC2 /* Main.storyboard */,
 				F0C8E26B29D8AFC300EB8CC2 /* Assets.xcassets */,
@@ -140,6 +145,7 @@
 			files = (
 				F0C8E26729D8AFC200EB8CC2 /* ViewController.swift in Sources */,
 				F0C8E26329D8AFC200EB8CC2 /* AppDelegate.swift in Sources */,
+				F0AD5F5E29DB83A600C7A381 /* PushNotificationManager.swift in Sources */,
 				F0C8E27729D8B11500EB8CC2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,9 +291,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Swizzling/Swizzling.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JY22C8NC68;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Swizzling/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -313,9 +320,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Swizzling/Swizzling.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JY22C8NC68;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Swizzling/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
