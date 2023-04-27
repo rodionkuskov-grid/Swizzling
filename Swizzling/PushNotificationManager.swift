@@ -31,5 +31,7 @@ class PushNotificationManager {
         let userInfo = notification.request.content.userInfo
         print("Info: \(userInfo)")
         completionHandler([.badge, .sound, .banner])
+
+        swizzledWillPresentNotification(center, willPresent: notification, withCompletionHandler: completionHandler)
     }
 }
