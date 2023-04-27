@@ -8,11 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private let framework = SomeFramework()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        framework.printSun()
+        SomeFramework().printSun()
+        print("-----------------")
+        SomeFramework().printSun()
+        print("-----------------")
+        SomeFramework().printSun()
+        print("-----------------")
+        SomeFramework().printSun()
+        print("-----------------")
+        SomeFramework().printSun()
+        print("-----------------")
     }
 }
 
