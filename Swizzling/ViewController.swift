@@ -27,8 +27,10 @@ class ViewController: UIViewController {
 // MARK: - Some framework
 
 class SomeFramework {
-    
+    private static var isSwizzlingCompleted: Bool = false
+
     init() {
+        guard !SomeFramework.isSwizzlingCompleted else { return }
         swizzleFunctions()
     }
     
@@ -50,5 +52,6 @@ class SomeFramework {
         else { return }
 
         method_exchangeImplementations(originalMethod, customMethod)
+        SomeFramework.isSwizzlingCompleted = true
     }
 }
