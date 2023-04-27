@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UNUserNotificationCenter.current().delegate = self
-        PushNotificationManager.swizzleWillPresentNotification() // Configure Swizzling
+        PushNotificationManager.swizzleWillPresentNotification() // Configure swizzling
 
         Task {
             let notificationCenter = UNUserNotificationCenter.current()
@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("Calling default will present notification from AppDelegate")
-        completionHandler([.badge, .sound, .banner])
+        print("Calling default will present notification from AppDelegate with some stuff")
     }
 }
 

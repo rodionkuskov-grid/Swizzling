@@ -8,6 +8,8 @@
 import Foundation
 import UserNotifications
 
+typealias OriginalWillPresentNotificationMethodType = @convention(c) (AnyObject, Selector, UNUserNotificationCenter, UNNotification, @escaping (UNNotificationPresentationOptions) -> Void) -> Void
+
 class PushNotificationManager {
     static func swizzleWillPresentNotification() {
         guard
@@ -26,12 +28,28 @@ class PushNotificationManager {
         method_exchangeImplementations(originalMethod, customMethod)
     }
 
-    @objc dynamic func swizzledWillPresentNotification(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    @objc dynamic func swizzledWillPresentNotification(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        callOriginalMethod(center, willPresent: notification, withCompletionHandler: completionHandler)
         print("Calling swizzled will present notification")
-        let userInfo = notification.request.content.userInfo
-        print("Info: \(userInfo)")
         completionHandler([.badge, .sound, .banner])
+    }
 
-        swizzledWillPresentNotification(center, willPresent: notification, withCompletionHandler: completionHandler)
+    private func callOriginalMethod(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        let originalSelector = #selector(UNUserNotificationCenter.current().delegate?.userNotificationCenter(_:willPresent:withCompletionHandler:))
+        let customWillPresentNotificationSelector = #selector(PushNotificationManager.swizzledWillPresentNotification(_:willPresent:withCompletionHandler:))
+        
+        // Returns bits of passed instance casted as OriginalWillPresentNotificationMethodType
+        unsafeBitCast(
+            class_getMethodImplementation(PushNotificationManager.self, customWillPresentNotificationSelector),
+            to: OriginalWillPresentNotificationMethodType.self
+        ) (self, originalSelector, center, notification, completionHandler)
     }
 }
