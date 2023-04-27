@@ -11,18 +11,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SomeFramework().printSun()
-        print("-----------------")
-        SomeFramework().printSun()
-        print("-----------------")
-        SomeFramework().printSun()
-        print("-----------------")
-        SomeFramework().printSun()
-        print("-----------------")
-        SomeFramework().printSun()
-        print("-----------------")
+    }
+
+    @objc dynamic func printSunModified() {
+        print("🌞🌞")
     }
 }
 
+extension SomeFramework {
+    static func swizzleFrameworkFunction() {
+        guard
+            let originalMethod = class_getInstanceMethod(SomeFramework.self, #selector(SomeFramework.printSun)),
+            let customMethod = class_getInstanceMethod(ViewController.self, #selector(ViewController.printSunModified))
+        else { return }
+
+        method_exchangeImplementations(originalMethod, customMethod)
+    }
+}
 
 // MARK: - Some framework
 
