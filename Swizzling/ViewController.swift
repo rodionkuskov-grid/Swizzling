@@ -30,15 +30,16 @@ class SomeFramework {
         print("🌞")
     }
 
-    // MARK: - Private function which will execute instead of printSun()
-    @objc private func printMoon() {
-        print("🌚")
+    // MARK: - Private function which should record analytics when printSun() is called. Also need to call original method
+    @objc private func logAnalytics() {
+        print("Logging analytics.")
+        printSun()
     }
 
     private func swizzleFunctions() {
         guard
             let originalMethod = class_getInstanceMethod(SomeFramework.self, #selector(SomeFramework.printSun)),
-            let customMethod = class_getInstanceMethod(SomeFramework.self, #selector(SomeFramework.printMoon))
+            let customMethod = class_getInstanceMethod(SomeFramework.self, #selector(SomeFramework.logAnalytics))
         else { return }
 
         method_exchangeImplementations(originalMethod, customMethod)
