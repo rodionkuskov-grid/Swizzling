@@ -25,6 +25,7 @@ class Foo {
 extension Foo {
     @_dynamicReplacement(for: foo)
     func fooReplacement() {
+        foo()
         print("fooReplacement")
     }
 }
